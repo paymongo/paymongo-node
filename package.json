@@ -1,0 +1,29 @@
+{
+  "name": "paymongo",
+  "version": "10.17.0",
+  "description": "PayMongo API wrapper",
+  "keywords": [
+    "paymongo",
+    "payment processing",
+    "api"
+  ],
+  "homepage": "https://github.com/paymongo/paymongo-node",
+  "author": "PayMongo Developers <developers@paymongo.com> (https://paymongo.com)",
+  "contributors": [],
+  "engines": {
+    "node": "^8.1 || >=10.*"
+  },
+  "main": "lib/paymongno.js",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "prettier": "^1.16.4"
+  },
+  "dependencies": {
+    "axios": "^1.1.3",
+    "qs": "^6.11.0"
+  },
+  "license": "MIT",
+  "scripts": {}
+}
