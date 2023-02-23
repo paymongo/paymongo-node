@@ -1,5 +1,5 @@
 {
-  "name": "paymongo",
+  "name": "paymongo-node",
   "version": "10.17.0",
   "description": "PayMongo API wrapper",
   "keywords": [
@@ -13,7 +13,7 @@
   "engines": {
     "node": "^8.1 || >=10.*"
   },
-  "main": "lib/paymongno.js",
+  "main": "src/paymongo.js",
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",

@@ -17,9 +17,9 @@ NodeJS 8 or higher.
 Install the package with:
 
 ```sh
-npm install paymongo --save
+npm install paymongo-node --save
 # or
-yarn add paymongo
+yarn add paymongo-node
 ```
 
 ## Getting Started
@@ -27,7 +27,7 @@ yarn add paymongo
 Simple usage looks like:
 
 ```js
-const paymongo = require('paymongo')('your secret api key');
+const paymongo = require('paymongo-node')('your secret api key');
 
 paymongo.paymentIntents.create({
   amount: 10000,
@@ -52,7 +52,7 @@ paymongo.paymentIntents.create({
 Or `async`/`await`:
 
 ```js
-const paymongo = require('paymongo')('your secret api key');
+const paymongo = require('paymongo-node')('your secret api key');
 
 (async () => {
   try {
