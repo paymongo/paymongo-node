@@ -61,6 +61,23 @@ PaymentIntentService.prototype.cancel = function(id) {
     });
 };
 
+PaymentIntentService.prototype.attach = function(id, params) {
+  return this.httpClient
+    .request({
+      url: this.uri + "/" + id + "/attach",
+      method: "post",
+      params : {
+        ...params,
+        origin: "nodejs"
+      },
+    })
+    .then(function(response) {
+      return new Promise(function(resolve, _reject) {
+        resolve(new PaymentIntent(response));
+      });
+    });
+}
+
 Object.setPrototypeOf(PaymentIntentService.prototype, BaseService.prototype);
 
 module.exports = PaymentIntentService;

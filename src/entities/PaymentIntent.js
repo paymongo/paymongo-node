@@ -11,6 +11,7 @@ function PaymentIntent(apiResource) {
   this.livemode = attributes.livemode;
   this.statement_descriptor = attributes.statement_descriptor;
   this.status = attributes.status;
+  this.origin = attributes.origin;
   this.payment_method_allowed = attributes.payment_method_allowed;
   this.payments = [];
 
