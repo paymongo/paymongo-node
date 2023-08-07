@@ -15,7 +15,7 @@ function PaymentIntent(apiResource) {
   this.payment_method_allowed = attributes.payment_method_allowed;
   this.payments = [];
 
-  if (attributes.payments !== null) {
+  if (attributes.payments) {
     const paymentsLength = attributes.payments.length;
 
     for (let paymentCtr = 0; paymentCtr < paymentsLength; paymentCtr++) {

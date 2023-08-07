@@ -6,4 +6,5 @@
 
 ## 10.18.0 - 2023-08-07
 
-- Add origin on payment method attachment for tracking SDK usage
+- Add origin on payment method attachment for tracking SDK usage.
+- Fix PaymentIntent entity for undefined payments.
