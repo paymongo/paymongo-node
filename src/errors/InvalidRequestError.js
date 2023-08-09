@@ -1,4 +1,4 @@
-const BaseError = require("./Base");
+const BaseError = require('./Base');
 
 function InvalidRequestError(data) {
   BaseError.call(this, data);

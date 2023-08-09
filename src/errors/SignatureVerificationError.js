@@ -1,5 +1,5 @@
 function SignatureVerificationError(message) {
-  this.type = "SignatureVerificationError";
+  this.type = 'SignatureVerificationError';
   this.message = message;
 }
 

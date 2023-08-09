@@ -1,5 +1,5 @@
-const Billing = require("./Billing");
-const Refund = require("./Refund");
+const Billing = require('./Billing');
+const Refund = require('./Refund');
 
 function Payment(apiResource) {
   attributes = apiResource.attributes;

@@ -1,23 +1,23 @@
-const BaseService = require("./Base");
-const Webhook = require("../entities/Webhook");
-const Event = require("../entities/Event");
-const Listing = require("../entities/Listing");
-const crypto = require("crypto");
-const ApiResource = require("../ApiResource");
-const UnexpectedValueError = require("../errors/UnexpectedValueError");
-const SignatureVerificationError = require("../errors/SignatureVerificationError");
+const BaseService = require('./Base');
+const Webhook = require('../entities/Webhook');
+const Event = require('../entities/Event');
+const Listing = require('../entities/Listing');
+const crypto = require('crypto');
+const ApiResource = require('../ApiResource');
+const UnexpectedValueError = require('../errors/UnexpectedValueError');
+const SignatureVerificationError = require('../errors/SignatureVerificationError');
 
 function WebhookService(client) {
   BaseService.call(this, client);
 
-  this.uri = "/webhooks";
+  this.uri = '/webhooks';
 }
 
 WebhookService.prototype.create = function(params) {
   return this.httpClient
     .request({
       url: this.uri,
-      method: "post",
+      method: 'POST',
       params,
     })
     .then(function(response) {
@@ -30,8 +30,8 @@ WebhookService.prototype.create = function(params) {
 WebhookService.prototype.update = function(id, params) {
   return this.httpClient
     .request({
-      url: this.uri + "/" + id,
-      method: "put",
+      url: this.uri + '/' + id,
+      method: 'PUT',
       params,
     })
     .then(function(response) {
@@ -44,8 +44,8 @@ WebhookService.prototype.update = function(id, params) {
 WebhookService.prototype.retrieve = function(id) {
   return this.httpClient
     .request({
-      url: this.uri + "/" + id,
-      method: "GET",
+      url: this.uri + '/' + id,
+      method: 'GET',
     })
     .then(function(response) {
       return new Promise(function(resolve, _reject) {
@@ -58,7 +58,7 @@ WebhookService.prototype.all = function(params) {
   return this.httpClient
     .request({
       url: this.uri,
-      method: "GET",
+      method: 'GET',
       params,
     })
     .then(function(response) {
@@ -84,8 +84,8 @@ WebhookService.prototype.all = function(params) {
 WebhookService.prototype.enable = function(id) {
   return this.httpClient
     .request({
-      url: this.uri + "/" + id + "/enable",
-      method: "post",
+      url: this.uri + '/' + id + '/enable',
+      method: 'POST',
     })
     .then(function(response) {
       return new Promise(function(resolve, _reject) {
@@ -97,8 +97,8 @@ WebhookService.prototype.enable = function(id) {
 WebhookService.prototype.disable = function(id) {
   return this.httpClient
     .request({
-      url: this.uri + "/" + id + "/disable",
-      method: "post",
+      url: this.uri + '/' + id + '/disable',
+      method: 'POST',
     })
     .then(function(response) {
       return new Promise(function(resolve, _reject) {
@@ -112,28 +112,28 @@ WebhookService.prototype.constructEvent = function(opts) {
   const signatureHeader = opts.signatureHeader;
   const webhookSecretKey = opts.webhookSecretKey;
 
-  const arrSignature = signatureHeader.split(",");
+  const arrSignature = signatureHeader.split(',');
 
   if (arrSignature.length < 3) {
     throw new UnexpectedValueError();
   }
 
-  const timestamp = arrSignature[0].split("=")[1];
-  const testModeSignature = arrSignature[1].split("=")[1];
-  const liveModeSignature = arrSignature[2].split("=")[1];
-  let comparisonSignature = "";
+  const timestamp = arrSignature[0].split('=')[1];
+  const testModeSignature = arrSignature[1].split('=')[1];
+  const liveModeSignature = arrSignature[2].split('=')[1];
+  let comparisonSignature = '';
 
-  if (testModeSignature !== "") {
+  if (testModeSignature !== '') {
     comparisonSignature = testModeSignature;
   }
 
-  if (liveModeSignature !== "") {
+  if (liveModeSignature !== '') {
     comparisonSignature = liveModeSignature;
   }
 
-  const hmac = crypto.createHmac("sha256", webhookSecretKey);
-  const data = hmac.update(timestamp + "." + payload);
-  const hmacData = data.digest("hex");
+  const hmac = crypto.createHmac('sha256', webhookSecretKey);
+  const data = hmac.update(timestamp + '.' + payload);
+  const hmacData = data.digest('hex');
 
   if (hmacData != comparisonSignature) {
     throw new SignatureVerificationError();

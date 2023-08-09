@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-const axios = require("axios");
-const AuthenticationError = require("./errors/AuthenticationError");
-const InvalidRequestError = require("./errors/InvalidRequestError");
-const ResourceNotFoundError = require("./errors/ResourceNotFoundError");
-const RouteNotFoundError = require("./errors/RouteNotFoundError");
-const ApiResource = require("./ApiResource");
+const axios = require('axios');
+const AuthenticationError = require('./errors/AuthenticationError');
+const InvalidRequestError = require('./errors/InvalidRequestError');
+const ResourceNotFoundError = require('./errors/ResourceNotFoundError');
+const RouteNotFoundError = require('./errors/RouteNotFoundError');
+const ApiResource = require('./ApiResource');
 
 function HttpClient(opts) {
   this.DEFAULT_TIMEOUT = 3000;
@@ -14,9 +14,9 @@ function HttpClient(opts) {
     baseURL: opts.baseUrl,
     timeout: this.DEFAULT_TIMEOUT,
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization:
-        "Basic " + Buffer.from(opts.apikey + ":").toString("base64"),
+        'Basic ' + Buffer.from(opts.apikey + ':').toString('base64'),
     },
   });
 }
@@ -27,11 +27,11 @@ HttpClient.prototype.request = function(opts) {
     method: opts.method,
   };
 
-  if (opts.method === "GET" && opts.hasOwnProperty("params")) {
+  if (opts.method === 'GET' && opts.hasOwnProperty('params')) {
     requestConfig.params = opts.params;
   }
 
-  if (opts.method !== "GET" && opts.hasOwnProperty("params")) {
+  if (opts.method !== 'GET' && opts.hasOwnProperty('params')) {
     requestConfig.data = {
       data: {
         attributes: opts.params,
@@ -55,10 +55,10 @@ HttpClient.prototype.request = function(opts) {
                 reject(new InvalidRequestError(error.response.data));
               });
             case 404:
-              if (error.response.data === "") {
+              if (error.response.data === '') {
                 return new Promise(function(_resolve, reject) {
                   reject(
-                    new RouteNotFoundError("Route " + opts.url + " not found.")
+                    new RouteNotFoundError('Route ' + opts.url + ' not found.')
                   );
                 });
               } else {
@@ -80,7 +80,7 @@ HttpClient.prototype.request = function(opts) {
         console.log(error.request);
       } else {
         // Something happened in setting up the request that triggered an Error
-        console.log("Error", error.message);
+        console.log('Error', error.message);
       }
     });
 };

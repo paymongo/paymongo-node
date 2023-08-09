@@ -1,19 +1,19 @@
-const BaseService = require("./Base");
-const Link = require("../entities/Link");
-const Listing = require("../entities/Listing");
-const ApiResource = require("../ApiResource");
+const BaseService = require('./Base');
+const Link = require('../entities/Link');
+const Listing = require('../entities/Listing');
+const ApiResource = require('../ApiResource');
 
 function LinkService(client) {
   BaseService.call(this, client);
 
-  this.uri = "/links";
+  this.uri = '/links';
 }
 
 LinkService.prototype.all = function(params) {
   return this.httpClient
     .request({
       url: this.uri,
-      method: "GET",
+      method: 'GET',
       params,
     })
     .then(function(response) {
@@ -39,8 +39,8 @@ LinkService.prototype.all = function(params) {
 LinkService.prototype.retrieve = function(id) {
   return this.httpClient
     .request({
-      url: this.uri + "/" + id,
-      method: "GET",
+      url: this.uri + '/' + id,
+      method: 'GET',
     })
     .then(function(response) {
       return new Promise(function(resolve, _reject) {
@@ -53,7 +53,7 @@ LinkService.prototype.create = function(params) {
   return this.httpClient
     .request({
       url: this.uri,
-      method: "post",
+      method: 'POST',
       params,
     })
     .then(function(response) {
@@ -66,8 +66,8 @@ LinkService.prototype.create = function(params) {
 LinkService.prototype.archive = function(id) {
   return this.httpClient
     .request({
-      url: this.uri + "/" + id + "/archive",
-      method: "post",
+      url: this.uri + '/' + id + '/archive',
+      method: 'POST',
     })
     .then(function(response) {
       return new Promise(function(resolve, _reject) {
@@ -79,8 +79,8 @@ LinkService.prototype.archive = function(id) {
 LinkService.prototype.unarchive = function(id) {
   return this.httpClient
     .request({
-      url: this.uri + "/" + id + "/unarchive",
-      method: "post",
+      url: this.uri + '/' + id + '/unarchive',
+      method: 'POST',
     })
     .then(function(response) {
       return new Promise(function(resolve, _reject) {

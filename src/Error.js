@@ -1,4 +1,4 @@
-const SourceError = require("./SourceError");
+const SourceError = require('./SourceError');
 
 function PaymongoError(error) {
   this._error = error;

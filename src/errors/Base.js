@@ -1,4 +1,4 @@
-const Error = require("../Error");
+const Error = require('../Error');
 
 function BaseError(data) {
   this._errors = data.errors;

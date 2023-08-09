@@ -1,11 +1,11 @@
-const SourceService = require("./Source");
-const CustomerService = require("./Customer");
-const LinkService = require("./Link");
-const PaymentService = require("./Payment");
-const PaymentIntentService = require("./PaymentIntent");
-const PaymentMethodService = require("./PaymentMethod");
-const RefundService = require("./Refund");
-const WebhookService = require("./Webhook");
+const SourceService = require('./Source');
+const CustomerService = require('./Customer');
+const LinkService = require('./Link');
+const PaymentService = require('./Payment');
+const PaymentIntentService = require('./PaymentIntent');
+const PaymentMethodService = require('./PaymentMethod');
+const RefundService = require('./Refund');
+const WebhookService = require('./Webhook');
 
 module.exports = {
   sources: SourceService,

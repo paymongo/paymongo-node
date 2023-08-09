@@ -1,19 +1,19 @@
-const BaseService = require("./Base");
-const Payment = require("../entities/Payment");
-const Listing = require("../entities/Listing");
-const ApiResource = require("../ApiResource");
+const BaseService = require('./Base');
+const Payment = require('../entities/Payment');
+const Listing = require('../entities/Listing');
+const ApiResource = require('../ApiResource');
 
 function PaymentService(client) {
   BaseService.call(this, client);
 
-  this.uri = "/payments";
+  this.uri = '/payments';
 }
 
 PaymentService.prototype.all = function(params) {
   return this.httpClient
     .request({
       url: this.uri,
-      method: "GET",
+      method: 'GET',
       params,
     })
     .then(function(response) {
@@ -40,7 +40,7 @@ PaymentService.prototype.create = function(params) {
   return this.httpClient
     .request({
       url: this.uri,
-      method: "post",
+      method: 'POST',
       params,
     })
     .then(function(response) {
@@ -53,8 +53,8 @@ PaymentService.prototype.create = function(params) {
 PaymentService.prototype.retrieve = function(id) {
   return this.httpClient
     .request({
-      url: this.uri + "/" + id,
-      method: "GET",
+      url: this.uri + '/' + id,
+      method: 'GET',
     })
     .then(function(response) {
       return new Promise(function(resolve, _reject) {
