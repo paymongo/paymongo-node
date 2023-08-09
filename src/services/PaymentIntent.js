@@ -68,7 +68,7 @@ PaymentIntentService.prototype.attach = function(id, params) {
       method: "post",
       params : {
         ...params,
-        origin: "nodejs"
+        origin: "node"
       },
     })
     .then(function(response) {
