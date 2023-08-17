@@ -7,5 +7,4 @@ function Event(apiResource)
   this.type = attributes.type;
 }
 
-
 module.exports = Event;

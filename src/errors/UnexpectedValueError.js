@@ -1,5 +1,5 @@
 function UnexpectedValueError(message) {
-  this.type = "UnexpectedValueError";
+  this.type = 'UnexpectedValueError';
   this.message = message;
 }
 

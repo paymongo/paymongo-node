@@ -1,4 +1,4 @@
-const BillingAddress = require("./BillingAddress");
+const BillingAddress = require('./BillingAddress');
 
 function Billing(data) {
   this.address = new BillingAddress(data.address);
